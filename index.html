@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+    <title>Vue BMI Tool</title>
+</head>
+
+<body>
+    <div id="app" class="container d-flex flex-column">
+        <header class="text-center shadow bg-dark-subtle text-success-emphasis rounded-bottom-4 opacity-75">
+            <h2 class="m-4">來檢測 BMI 值吧！</h2>
+        </header>
+
+        <main class="mb-auto mt-5">
+            <div class="col-11 col-sm-11 col-md-10 col-lg-7 col-xxl-7 mb-3">
+                <p>
+                    世界衛生組織指出，吸菸、飲酒過量、飲食不健康及身體活動不足等四種不健康的生活習慣是四大非傳染疾病（癌症、糖尿病、心血管疾病、慢性呼吸道疾病）的主要危險因子。
+                </p>
+                <p>
+                    面對體位議題，世界各國均採世界衛生組織之方法，以身體質量指數（Body Mass Index，BMI）【體重（公斤）／身高2（公尺2）】作為健康體位、過重和肥胖的切點，然而，愈來愈多研究顯示，「健康身體組成」及「合宜的腰圍」才是健康體位的關鍵，亦是判斷國人體位之重要參考指標。
+                </p>
+            </div>
+            
+            <!--CALCULATOR-->
+            <div class="col-10 col-md-8 col-lg-5 mb-5">
+                <form>
+                    <div class="row mb-3">
+                        <p class="text-primary-emphasis"><strong>BMI計算公式 = 體重(公斤) / 身高(平方公尺)</strong></p>
+                    </div>
+
+                    <div class="row mb-3">
+                        <label class="col-4 col-form-label">身高 (公分)</label>
+                        <div class="col-5">
+                            <input type="text" class="form-control" maxlength="3" v-model="height">
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <label class="col-4 col-form-label">體重 (公斤)</label>
+                        <div class="col-5">
+                            <input type="text" class="form-control" maxlength="3" v-model="weight">
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <label class="col-4 col-form-label">BMI</label>
+                        <div class="col-5">
+                            <input type="text" class="form-control" disabled v-model="BMI">
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <!--STANDARD TABLE-->
+            <div class="col-10 col-md-6 col-lg-4">
+                <table class="table table-hover table-bordered caption-top shadow-lg text-center">
+                    <caption>18歲以上成人的體重分級與標準</caption>
+                    <thead class="table-primary">
+                        <tr>
+                            <th scope="col" v-for="header in headers">{{header}}</th>
+                        </tr>
+                    </thead>
+                    <tbody class="table-group-divider">
+                        <tr v-for="d in datas">
+                            <td>{{d.grade}}</td>
+                            <td>{{d.BMI}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!--DESCRIPTION-->
+            <div class="col-11 col-sm-11 col-md-10 col-lg-7 col-xxl-7 mt-5">
+                <p>造成肥胖的主因為熱量攝取高於熱量消耗，其他影響因素包括：飲食、身體活動、社會環境因素等。</p>
+                <p><strong>國人過重及肥胖盛行率上升主要原因：</strong></p>
+                <p>
+                    （一）飲食西化及食物精緻化，易攝取過多熱量，看電腦、上網等靜態久坐生活增加，身體活動量不足
+                </p>
+                <p>
+                    （二）含糖飲料及高熱量之不健康食物過多，許多食物沒有熱量營養標示或辨識不易
+                </p>
+                <p>
+                    （三）大眾運輸系統及運動休閒設施不足
+                </p>
+                <p>
+                    （四）弱勢族群少有機會接受健康教育訊息，經濟能力有限，容易買到低營養、高熱量食物
+                </p>
+                <p>
+                    （五）不健康食物廣告贈品行銷，導致民眾攝取過多熱量、脂肪和含糖食物
+                </p>
+            </div>
+        </main>
+
+        <footer class="p-3 border-top text-center mt-5 text-body-tertiary">
+            <p>
+                <a href="https://www.hpa.gov.tw/Pages/List.aspx?nodeid=1757">資料來源：衛生福利部國民健康署</a>
+            </p>
+
+            <span>© 2023 FakeStandard All right reserved</span>
+        </footer>
+    </div>
+
+    <!--SCRIPT-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="style.js"></script>
+</body>
+
+</html>
